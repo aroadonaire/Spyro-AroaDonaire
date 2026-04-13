@@ -13,6 +13,10 @@ class WorldsAdapter(
     private val list: List<World>
 ) : RecyclerView.Adapter<WorldsAdapter.WorldsViewHolder>() {
 
+    private var clickCount=0
+    private var lastClickTime: Long =0
+    private var lastPosition: Int =-1
+
     private val worldImages = mapOf(
         "sunny_beach" to R.drawable.sunny_beach,
         "midday_gardens" to R.drawable.midday_gardens,
@@ -37,6 +41,27 @@ class WorldsAdapter(
 
         val drawableRes = worldImages[world.image] ?: R.drawable.placeholder
         holder.imageImageView.setImageResource(drawableRes)
+
+        holder.itemView.setOnClickListener {
+            val currentTime= System.currentTimeMillis()
+
+            if(position== lastPosition&& currentTime- lastClickTime< 500){
+                clickCount++
+            }else {
+                clickCount=1
+            }
+
+            lastClickTime= currentTime
+            lastPosition= position
+
+            if(clickCount==3){
+                clickCount=0
+
+                val context= holder.itemView.context
+                val intent= android.content.Intent(context, dam.pmdm.spyrothedragon.VideoActivity::class.java)
+                context.startActivity(intent)
+            }
+        }
     }
 
     override fun getItemCount(): Int = list.size

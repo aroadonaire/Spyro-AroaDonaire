@@ -9,31 +9,39 @@
     app:cardCornerRadius="30dp"
     app:cardBackgroundColor="@color/yellow2">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        android:background="#00000000">
+        android:padding="5dp">
 
-        <!-- Imagen del personaje -->
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/spyro"
-            android:scaleType="centerCrop"/>
-
-        <!-- Nombre del personaje -->
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="16dp"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/spyro" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="16dp"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <dam.pmdm.spyrothedragon.CetroMagicView
+            android:id="@+id/cetroMagicEffect"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="start"
+            android:visibility="invisible" />
+
+    </FrameLayout>
 </androidx.cardview.widget.CardView>
